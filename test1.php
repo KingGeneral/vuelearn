@@ -49,6 +49,12 @@
 		    console.log('update: '+
 			 		'el = ' + this.$el.textContent);
 			},
+			beforeDestroy() {
+				console.log('beforeDestroy');
+			},
+			Destroyed(){
+				console.log('Destroyed');
+			}
 	  });
 
 	  // init

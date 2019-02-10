@@ -41,13 +41,13 @@
 	  	beforeUpdate() {
 	  		console.log('beforeUpdate');
 	  		console.log('beforeUpdate: '+
-			  'el = ' + this.$el.textContent)
+			  	'el = ' + this.$el.textContent);
 				// vm.message = "Wow reaktif ya"; // active this to update vue
 	  	},
 	  	updated() {
 	  		// this.$el.textContent = 'Content Updated';
 		    console.log('update: '+
-			  'el = ' + this.$el.textContent)
+			 		'el = ' + this.$el.textContent);
 			},
 	  });
 
@@ -55,11 +55,15 @@
 	  // untuk mengarahkan mount point Vue pada saat runtime.
 	  vm.$mount('#app');
 
-	  // test
-	  
+	  // test watcher
+	  vm.$watch('message',function(newValue, oldValue) {
+	  	console.log('Watcher : Var Message changed from '+
+	  		oldValue + ' into ' + newValue
+	  	);
+	  });
 
 	  // call vue
-		// vm.message = "Wow reaktif ya";
+		vm.message = "Wow reaktif ya";
 
 	  // console.log(vm.$data);
 	  // console.log(vm.$data.message);

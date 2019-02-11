@@ -67,6 +67,25 @@
 		    Informasi 1 kali klik
 		</button>
 
+    <!-- prevent default -->
+    <a href="http://vuejs.org" v-on:click.prevent="confirmInfo('Go to link')">
+      Vuejs.org
+    </a>
+
+    <button @click="confirmInfo('Go to link')">this the same as v-on</button>
+
+    <!-- <input v-on:keyup.enter="info('Terima kasih ' + $event.target.value)"> -->
+    <input type="text" name="name" v-on:keyup.enter="info('Terima Kasih ' + $event.target.value)">
+
+    <!-- bindings -->
+    <img v-bind:src="imageSrc">
+
+    <div v-bind:class="{ redclass: isRed }"></div>
+    <div v-bind:class="{ yellowclass: isYellow }"></div>
+    <div v-bind:style="{ fontSize: sizefont + 'px' }"></div>
+
+    <img v-bind="{ id:imageID, src: imageSrc}" />
+
 		<!-- end app -->
   </div>
 
@@ -82,6 +101,11 @@
   			thisShow:false,
   			nilai:'B',
   			counter:0,
+        imageSrc: 'logo-vue.png',
+        sizefont:24,
+        isRed:false,
+        isYellow:true,
+        imageID:'owowow'
   		},
   		methods: {
   			info(infoMessage){
@@ -93,6 +117,10 @@
   			}
   		}
   	});
+
+    setTimeout(()=>{
+        vm.imageSrc = 'flowers.jpg'
+    },3000);
   </script>
   <!-- end script -->
 </body>

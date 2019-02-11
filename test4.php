@@ -5,12 +5,43 @@
   <script src="lib/vue.js"></script>
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app">
+  	<ul>
+  		<li v-for="book in books">
+  			{{ book }}
+  		</li>
+  	</ul>
+
+  	<hr>
+
+  	<ul>
+  		<template v-for="book in books">
+	  		<li>{{ book }}</li>
+  		</template>
+  	</ul>
+
+  	<hr>
+
+  	<ul>
+  		<template v-for="book of books">
+	  		<li>{{ book }}</li>
+  		</template>
+  	</ul>
+
+  	<hr>
+
+  	<ul>
+  		<li v-for="(book, index) in books" >
+  			{{ index + 1 }}, {{ book }}
+  		</li>
+  	</ul>
+  </div>
+
   <script type="text/javascript">
   	var vm = new Vue({
   		el: '#app',
   		data: {
-  			book: [
+  			books: [
   				'C++ High Performance', 
             	'Mastering Linux Security and Hardening', 
             	'Python Programming Blueprints', 

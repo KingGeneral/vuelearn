@@ -85,7 +85,7 @@
     <div v-bind:style="{ fontSize: sizefont + 'px' }"></div>
 
     <img v-bind="{ id:imageID, src: imageSrc}" />
-
+    <a :href="urlvue"> Website VueJS </a>
 		<!-- end app -->
   </div>
 
@@ -105,7 +105,8 @@
         sizefont:24,
         isRed:false,
         isYellow:true,
-        imageID:'owowow'
+        imageID:'owowow',
+        urlvue:'www.google.com',
   		},
   		methods: {
   			info(infoMessage){

@@ -102,7 +102,7 @@
       <tr></tr>
       <tr></tr>
       <tr></tr>
-      
+
       <template v-for="(value,key) of booksinlist">
         <tr>
           <td>{{key+1}}</td>
@@ -122,6 +122,22 @@
     </table>
 
     <!-- end of app -->
+
+    <hr>
+    <hr>
+    <hr>
+
+    <!-- show books with limited price -->
+    <!-- Terkait dengan metode menampilkan list, Vue menyarankan agar sebisa mungkin menggunakan atribut key pada tag HTML yang ikut dalam perulangan v-for. Key tersebut berperan sebagai penanda unik, sehingga Vue bisa melakukan tracking perubahan atas setiap tag HTML dari elemen list yang di-render. -->
+    <ul>
+      <li v-for="(book, index) of booksinlist" 
+          :key="index"
+          v-if="book.price>=100000"
+      >
+        {{book.title}}
+      </li>
+    </ul>
+
   </div>
 
   <script type="text/javascript">

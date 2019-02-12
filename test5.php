@@ -6,7 +6,7 @@
 </head>
 <body>
   <div id="app">
-  	<input type="text" name="title">	
+  	<input type="text" name="title" :value="title" @input="title = $event.target.value">	
   	{{ title }}
   </div>
 

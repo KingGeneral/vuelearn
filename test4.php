@@ -102,7 +102,7 @@
       <tr></tr>
       <tr></tr>
       <tr></tr>
-
+      
       <template v-for="(value,key) of booksinlist">
         <tr>
           <td>{{key+1}}</td>

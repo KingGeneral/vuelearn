@@ -100,6 +100,8 @@
     </select>
     <span>Selected: {{ categories2 }}</span>
 
+    <input type="text" name="bukuku" v-model="keyword" placeholder="tes kata">
+
   </div>
 
   <script type="text/javascript">
@@ -115,7 +117,8 @@
         gender: true,
         hobby:[],
         categories:[],  
-        categories2:[],  
+        categories2:[], 
+        keyword:'', 
         options: [
           {text:'Graph 1',value:'01'},
           {text:'Graph 2',value:'02'},

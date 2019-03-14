@@ -22,7 +22,15 @@
 	</head>
 	<body>
 	  <div id="app">
-	  	<form @submit="submitForm($event)" action="/addproduct" method="post">
+  		<form ref="formBook" @submit.prevent="submitForm($event)" action="/add-product" method="post">
+
+	  		<p v-if="errors.length">
+	  			<b>Error terdaftar : </b>
+	  			<ul>
+	  				<li v-for="error in errors">{{ error }}</li>
+	  			</ul>
+	  		</p>
+
 	  		<label>Title</label>
 	  		<input type="text" v-model="title" ref="title"> {{ title }}
 	  		
@@ -64,41 +72,84 @@
 	  		},
 	  		methods: {
 	  			submitForm(event) {
-	  				// init 
-	  				let error = 0;
+
+	  				// - - - - - internal 
+	  				this.errors = [];
+
+	  				// - - - - - init 
+	  				// let error = 0;
+
+	  				// - - - - - validation
 
 	  				if(this.title.length < 3){
-	  					error++;
+	  					// error++;
 	  					this.$refs.title.focus(); // directive ref
 	  					// this.$refs.title.select(); // directive ref
-	  					alert('Title minimal 3 Karakter');
+	  					// alert('Title minimal 3 Karakter');
+	  					this.errors.push('Title minimal 3 Karakter');
 	  				}else if(this.description.length <= 0 || this.description.length > 500){
-	  					error++;
+	  					// error++;
 	  					this.$refs.description.focus(); // directive ref
-	  					alert('Description maximal 500 karakter!');
+	  					// alert('Description maximal 500 karakter!');
+	  					this.errors.push('Description maximal 500 karakter!');
 	  				}else if(this.author.length < 3){
-	  					error++;
+	  					// error++;
 	  					this.$refs.author.focus(); // directive ref
-	  					alert('Authors minimal 3 karakter!');
+	  					// alert('Authors minimal 3 karakter!');
+	  					this.errors.push('Authors minimal 3 karakter!');
 	  				}else if(this.price <= 0){
-	  					error++;
+	  					// error++;
 	  					this.$refs.price.focus(); // directive ref
-	  					alert('Price tidak boleh minus!');
+	  					// alert('Price tidak boleh minus!');
+	  					this.errors.push('Price tidak boleh minus!');
 	  				}else if(this.categories.length === 0){
-	  					error++;
+	  					// error++;
 	  					this.$refs.categories.focus(); // directive ref
-	  					alert('Pilih minimal 1 category!');
+	  					// alert('Pilih minimal 1 category!');
+	  					this.errors.push('Pilih minimal 1 category!');
 	  				}
-
 	  				// console.log(event);
-	  				// validation
-	  				// send server
-	  				// thanks
+	  				
+	  				// - - - - - thanks
+	  				/*
 	  				if(error === 0){
 		  				alert("cool");
 	  				}
+					*/
+					if(this.errors.length === 0 ){
+		  				// alert("cool");
+						// - - - - - preparing data
+		  				let formData = new FormData();
+
+		  				formData.append('title',this.title);
+		  				formData.append('description',this.description);
+		  				formData.append('author',this.author);
+		  				formData.append('price',this.price);
+		  				formData.append('categories',this.categories);
+		  				// let formBook = this.$refs.formBook;
+		  				// formData = new FormData(formBook);
+
+	  					// - - - - - send server
+	  					let xhttp = new XMLHttpRequest(); // create objek XMLHttp
+
+	  					xhttp.onreadystatechange = function() {
+	  						// state ini menunjukkan data terkirim dan diterima server dengan baik
+					        if (this.readyState == 4 && this.status == 200) {
+					        	console.log(this.responseText)
+					        }
+	  					}
+
+	  					// sesuaikan dengan lokasi file index.php di lokasi komputer kamu
+					    // xhttp.open("POST", "http://localhost/vuelearn/addproduct.php", true);
+					    xhttp.open("POST", "addproduct.php", true);
+
+					    // kirim objek formData
+					    xhttp.send(formData);
+					}
+
 	  				// block redirect
-	  				event.preventDefault();
+	  				// event.preventDefault();
+	  				// sudah digantikan dengan @submit.prevent
 	  			}
 	  		}
 	  	})

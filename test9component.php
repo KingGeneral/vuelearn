@@ -24,6 +24,7 @@
 				title="C++ oyee"
 				description="aaaa bbbb cccc dddd eeee"
 				image="book1.png"
+				alte="book1"
 			>
 			</book>
 		</div>
@@ -36,11 +37,11 @@
 				}
 			},
 			// props : mekanisme untuk mengirimkan atau mengeset suatu data pada component 
-			props: ['title','description','image'],
+			props: ['title','description','image','alte'],
 			template:`
 				<div :class="classCard">
 					<h3>{{ title }}</h3>
-					<img :src="'img/books/'+image" style="width:100%"></img>
+					<img :src="'img/books/'+image" style="width:100%" :alt="alte"></img>
 					<p v-html="description"></p>
 				</div>
 			`

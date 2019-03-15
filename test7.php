@@ -50,6 +50,9 @@
 	  			</option>
 	  		</select>
 
+	  		<label>Cover:</label>
+	  		<input type="file" ref="cover" name="cover">
+
 	  		<label></label>
 	  		<input type="submit" value="submit">
 	  	</form>
@@ -120,12 +123,15 @@
 		  				// alert("cool");
 						// - - - - - preparing data
 		  				let formData = new FormData();
+		  				let cover = this.$refs.cover.files[0];
 
 		  				formData.append('title',this.title);
 		  				formData.append('description',this.description);
 		  				formData.append('author',this.author);
 		  				formData.append('price',this.price);
 		  				formData.append('categories',this.categories);
+		  				formData.append('cover',cover);
+
 		  				// let formBook = this.$refs.formBook;
 		  				// formData = new FormData(formBook);
 

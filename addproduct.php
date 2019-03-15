@@ -9,3 +9,5 @@ echo "SIMULASI KIRIM DATA FORM <hr>";
 // menampilkan data yang dikirimkan dengan method post
 print_r($_POST);
 var_dump($_POST);
+
+print_r($_FILES['cover']);

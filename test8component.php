@@ -15,6 +15,11 @@
 		    <component-a></component-a>
 		    <component-b></component-b>
 		</div>
+		<hr>
+		<div id="app3">aaa
+			<comp-a></comp-a>
+			<comp-b></comp-b>
+		</div>
 	</body>
 	<script type="text/javascript">
 		// penamaan component pada vue
@@ -47,5 +52,23 @@
 		// });  
 		new Vue({ el: '#app'})
 		new Vue({ el: '#app2'})
+
+		/* - - - - - - - - - - - - - - - - */
+
+		var ComponentA = {
+			template: `<p>hahaha</p>`
+		}
+		var ComponentB = {
+			template: `<p>hahaha2</p>`
+		}
+
+		new Vue({
+			el: '#app3',
+			components: {
+				'comp-a': ComponentA,
+				'comp-b': ComponentB,
+			}
+		})
+
 	</script>
 </html>

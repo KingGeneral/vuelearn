@@ -12,10 +12,14 @@
 			<p>
 				<router-link to="/">Home</router-link>
 				<router-link to="/about">About</router-link>
+				<router-link to="/books">Books</router-link> 
 			</p>
 			<router-view></router-view>
 		</div>
 	</body>
+	<script type="module">
+		import { BooksComponent } from './js/BooksComponent.js';
+	</script>
 	<script type="text/javascript">
 		// definisikan konfigurasi component
 		const Home = { template: '<div>Halaman Home</div>'}
@@ -25,6 +29,9 @@
 		const routes = [
 			{ path: '/', component: Home, alias: '/home'},
 			{ path: '/about', component: About},
+			// { path: '/book/:id', component: Book },
+			// { path: '/books', component: BooksComponent },
+			{ path: '/books', component: BooksComponent },
 			{ path: '*', redirect: '/' }
 		]
 

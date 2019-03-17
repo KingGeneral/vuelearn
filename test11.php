@@ -16,6 +16,12 @@
 			h3{
 			    min-height: 45px;
 			}
+			.fade-enter-active, .fade-leave-active {
+			  	transition: opacity .5s;
+			}
+			.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+			  	opacity: 0;
+			}
 	  	</style>
 	</head>
 	<body>
@@ -24,7 +30,9 @@
 			<detail></detail> -->
 			<button @click="currentComponent = 'list'">List</button>
 			<button @click="currentComponent = 'detail'">Detail</button>
-			<component :is="currentComponent"></component>
+			<transition name="fade" mode="out-in">
+				<component :is="currentComponent"></component>
+			</transition>
 		</div>
 	</body>
 	<script type="text/javascript">

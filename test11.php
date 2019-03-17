@@ -20,8 +20,11 @@
 	</head>
 	<body>
 		<div id="app">
-			<list></list>
-			<detail></detail>
+			<!-- <list></list>
+			<detail></detail> -->
+			<button @click="currentComponent = 'list'">List</button>
+			<button @click="currentComponent = 'detail'">Detail</button>
+			<component :is="currentComponent"></component>
 		</div>
 	</body>
 	<script type="text/javascript">
@@ -51,6 +54,9 @@
 
 		var vm = new Vue({
 			el: '#app',
+			data: {
+				currentComponent: 'list'
+			},
 			components: {
 				'list' : list,
 				'detail' : detail

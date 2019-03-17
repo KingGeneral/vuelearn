@@ -31,6 +31,13 @@
 		    <information>
 		    	<p>added - Hati-hati lantai licin!</p>
 		    </information>
+		    <!-- <book-new
+		    	v-for="book in books"
+		        :key="book.id"
+		        :book="book"
+		        @selected="selectedBook = $event"
+		    >
+		    </book-new> -->
 		    <!-- <book
 				v-for 	= "book in books"
 				:key 	= "book.id"
@@ -42,6 +49,9 @@
 		</div>
 	</body>
 	<script type="text/javascript">
+		// import { BookNew } from './randomjs/BookNew.js'
+		// import { BookNew } from 'http://localhost/vue/randomjs/BookNew.js';
+
 		var Information = {
 			template: `
 				<div class="card">
@@ -82,6 +92,7 @@
 			components: {
 				'book': BookComponent,
 				'information': Information,
+				// 'book-new': BookNew,
 			},
 			data: {
 				selectedBook: '',

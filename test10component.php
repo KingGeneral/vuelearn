@@ -28,6 +28,9 @@
 		        @selected="selectedBook = $event"
 		    >
 		    </book>
+		    <information>
+		    	<p>added - Hati-hati lantai licin!</p>
+		    </information>
 		    <!-- <book
 				v-for 	= "book in books"
 				:key 	= "book.id"
@@ -36,10 +39,19 @@
 				:image 	= "book.image"
 			>
 			</book> -->
-			
 		</div>
 	</body>
 	<script type="text/javascript">
+		var Information = {
+			template: `
+				<div class="card">
+					<strong>Informasi</strong>
+					<hr>
+					<slot></slot>
+					<p>this is paragraph</p>
+				</div>
+			`
+		}
 		var BookComponent = {
 			data() {
 				return {
@@ -69,6 +81,7 @@
 			el: '#app',
 			components: {
 				'book': BookComponent,
+				'information': Information,
 			},
 			data: {
 				selectedBook: '',

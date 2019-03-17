@@ -20,13 +20,14 @@
 	</head>
 	<body>
 		<div id="app">
+			<h1>Selected: {{ selectedBook }}</h1>
 			<book 
 		        v-for="book in books"
 		        :key="book.id"
 		        :book="book"
+		        @selected="selectedBook = $event"
 		    >
 		    </book>
-
 		    <!-- <book
 				v-for 	= "book in books"
 				:key 	= "book.id"
@@ -52,6 +53,7 @@
 					<h3>{{ book.title }}</h3>
 					<img :src="'img/books/'+book.image" style="width:100%">
 					<p v-html="book.description"></p>
+					<button @click="$emit('selected', book.title)"> Select </button>
 				</div>
 			`
 			// template:`
@@ -69,6 +71,7 @@
 				'book': BookComponent,
 			},
 			data: {
+				selectedBook: '',
 				books : [
 					{
 		                id: 99,

@@ -126,9 +126,34 @@
 		    },
 		    computed: {
 		        book() {
-		            return this.books.filter((book)=>{
+		            // return this.books.filter((book)=>{
+		            //     return book.id === parseInt(this.$route.params.id)                
+		            // })[0]
+			        let book = this.books.filter((book)=>{
 		                return book.id === parseInt(this.$route.params.id)                
-		            })[0]
+		            })
+
+
+			        // jika buku tidak ditemukan
+			        if(book.length==0){
+			        	
+			        	// router.push( /* location */ )
+						// jika di dalam objek Vue atau component, tambahkan this.$ 
+						// this.$router.push( /* location */ )
+						/*
+							router.push('/')
+							router.push({'/home'})
+							router.push({name:'user', params: {userId: 123}})
+							router.push({path:'register',query:{plan:'private'}})
+
+							jangan bingung dengan $route vs $router. $route mengembalikan routing saat ini, sedangkan $router adalah objek router yang bisa kita gunakan untuk menjalankan fungsi push() dan go().
+						*/
+			        	// redirect
+			        	alert("buku tidak ditemukan")
+			        	this.$router.push("/books")
+			        }else{
+			        	return book[0];
+			        }
 		        }
 		    },
 		    template: `
